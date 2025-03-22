@@ -6,11 +6,15 @@ function getRandomDelay() {
 function createPromise(promiseNumber) {
     return new Promise((resolve) => {
         const delay = getRandomDelay();
+        const startTime = performance.now(); // Record start time here
         setTimeout(() => {
-            resolve({ promiseNumber, timeTaken: delay });
+            const endTime = performance.now(); // Record end time here
+            const timeTaken = ((endTime - startTime) / 1000).toFixed(3); // Calculate time taken
+            resolve({ promiseNumber, timeTaken });
         }, delay * 1000);
     });
 }
+
 
 // Create 3 promises
 const promise1 = createPromise(1);
