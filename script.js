@@ -1,5 +1,4 @@
-//your JS code here. If required.
-unction getRandomDelay() {
+function getRandomDelay() {
     return Math.floor(Math.random() * 3) + 1;
 }
 
@@ -20,10 +19,16 @@ const promise3 = createPromise(3);
 
 // Display loading message initially
 const output = document.getElementById('output');
+output.innerHTML = `
+    <tr>
+        <td colspan="2" class="text-center">Loading...</td>
+    </tr>
+`;
 
-// Wait for all promises to resolve
+// Start time for calculating total duration
 const startTime = performance.now();
 
+// Wait for all promises to resolve
 Promise.all([promise1, promise2, promise3]).then((results) => {
     // Calculate total time
     const endTime = performance.now();
